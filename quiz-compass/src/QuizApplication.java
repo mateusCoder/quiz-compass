@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class QuizApplication{
@@ -10,6 +9,7 @@ public class QuizApplication{
 		Question questionA = new Question("Café e açucar vão na:", "xicara");
 		Question questionB = new Question("Qual a fórmula da água:", "h2o");
 		Question questionC = new Question("Melhor bebida do mundo:", "cerveja");
+		Question questionD = new Question("Numero do lado oposto ao 1 de um dado de 6 lados:", "Seis");
 		
 		
 		System.out.printf("\t QUIZ COMPASS \n" + "\t-------------- \n\n");
@@ -18,13 +18,6 @@ public class QuizApplication{
 		userName = read.next();	
 		
 		questionA.createQuestion(userName);
-		
-//		int randomNumber = questionA.randomNumber();
-//		questionA.createQuestion(randomNumber);
-//		
-//		choice = read.next();	
-//		System.out.println(questionA.checkQuestion(randomNumber, choice));
-		
 	
 				
 	}

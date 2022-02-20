@@ -15,22 +15,23 @@ public class Question {
 	
 	public Question(String question, String alternative) {
 		this.questions.add(question);
-		this.alternatives.add(alternative);
+		this.alternatives.add(alternative.toUpperCase());
 	}
 	
-//	public int randomNumber() {
-//		Random generator = new Random();
-//		randomNumber = generator.nextInt(questions.size());
-//		return randomNumber;
-//	}
+	public int randomNumber() {
+		Random generator = new Random();
+		randomNumber = generator.nextInt(questions.size());
+		return randomNumber;	
+	}
 	
 	public void createQuestion(String userName) {
-		for(int i = 0; i < questions.size(); i++) {
-			System.out.println(questions.get(i));
+		for(int i = 0; i < questions.size(); i++) {	
+			int randomNumber = randomNumber();
+			System.out.println(questions.get(randomNumber));
 			System.out.printf("Resposta: \n");
 			choice = read.next();
 			
-			if(alternatives.get(i).equals(choice)) {
+			if(alternatives.get(randomNumber).equals(choice.toUpperCase())) {
 				System.out.println("Acertou! \n");
 				points++;
 			}else {
@@ -38,6 +39,7 @@ public class Question {
 				mistakes++;
 			}
 		}
+		
 		System.out.println(div);
 		System.out.println(" Usuário: " + userName);
 		System.out.println(div);
