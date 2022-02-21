@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -18,20 +19,32 @@ public class Question {
 		this.alternatives.add(alternative.toUpperCase());
 	}
 	
-	public int randomNumber() {
+	public Integer[] randomNumber() {
 		Random generator = new Random();
-		randomNumber = generator.nextInt(questions.size());
-		return randomNumber;	
+		
+		Integer [] randomNumberList = new Integer[questions.size()];
+		int count = 0;
+		
+		while(count < questions.size()) {
+			randomNumber = generator.nextInt(questions.size());
+						
+			if(!(Arrays.asList(randomNumberList).contains(randomNumber))) {
+				randomNumberList[count] = randomNumber;
+				count++;
+			}
+		}
+
+		return randomNumberList;
 	}
 	
 	public void createQuestion(String userName) {
+		Integer[] randomNumberList = randomNumber();	
 		for(int i = 0; i < questions.size(); i++) {	
-			int randomNumber = randomNumber();
-			System.out.println(questions.get(randomNumber));
+			System.out.println(questions.get(randomNumberList[i]));
 			System.out.printf("Resposta: \n");
 			choice = read.next();
-			
-			if(alternatives.get(randomNumber).equals(choice.toUpperCase())) {
+						
+			if(alternatives.get(randomNumberList[i]).equals(choice.toUpperCase())) {
 				System.out.println("Acertou! \n");
 				points++;
 			}else {
